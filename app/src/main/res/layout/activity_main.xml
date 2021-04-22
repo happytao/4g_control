@@ -1,0 +1,427 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:background="@color/color_F4F4F4"
+    >
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        >
+
+        <View
+            android:id="@+id/view_background0"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:background="@drawable/bg_card_radius"
+            app:layout_constraintBottom_toBottomOf="@id/btn_manual_start"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="手动继电器开关"
+            app:layout_constraintTop_toTopOf="@id/view_background0"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:id="@+id/manual_title"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/blue"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            app:layout_constraintTop_toBottomOf="@id/manual_title"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:background="@color/color_1A000000"
+            android:layout_marginTop="10dp"
+            android:id="@+id/line_manual"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/line_manual"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/switch_button"
+            android:text="启动"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            app:layout_constraintHorizontal_weight="1"
+            android:id="@+id/btn_manual_start"
+            app:layout_constraintRight_toLeftOf="@id/btn_manual_stop"
+            app:layout_constraintBottom_toBottomOf="@id/view_background0"
+            android:layout_marginBottom="20dp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/line_manual"
+            android:layout_marginTop="20dp"
+            app:layout_constraintRight_toRightOf="parent"
+            android:background="@drawable/switch_button_stop"
+            android:text="停止"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            app:layout_constraintHorizontal_weight="1"
+            android:id="@+id/btn_manual_stop"
+            app:layout_constraintLeft_toRightOf="@id/btn_manual_start"
+            app:layout_constraintBaseline_toBaselineOf="@id/btn_manual_start" />
+
+
+        <View
+            android:id="@+id/view_background"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/bg_card_radius"
+            app:layout_constraintBottom_toBottomOf="@id/btn_start_watering"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_background0"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="定时浇灌功能"
+            app:layout_constraintTop_toTopOf="@id/view_background"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:id="@+id/timing_title"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/blue"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            app:layout_constraintTop_toBottomOf="@id/timing_title"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:background="@color/color_1A000000"
+            android:layout_marginTop="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/timing_title"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:text="请点击时间，设定定时时间"
+            android:layout_marginTop="20dp"
+            android:textSize="18sp"
+            android:textColor="@color/green"
+            android:id="@+id/timing_tip"/>
+
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="定时时间"
+            android:textSize="40sp"
+            android:textColor="@color/color_000000"
+            android:layout_gravity="center"
+            android:id="@+id/timing"
+            app:layout_constraintTop_toBottomOf="@id/timing_tip"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="20dp"
+            android:background="#87CEEB"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/timing"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/view_background"
+            android:text="开始浇灌"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:background="@drawable/switch_button"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_marginTop="20dp"
+            android:id="@+id/btn_start_watering"
+            android:layout_marginBottom="20dp"
+            />
+
+        <View
+            android:id="@+id/view_background2"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/bg_card_radius"
+            app:layout_constraintBottom_toBottomOf="@id/btn_save_order_time"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_background"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="预约浇灌功能"
+            app:layout_constraintTop_toTopOf="@id/view_background2"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/line_order_watering"
+            android:id="@+id/order_title"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="20dp"
+            android:textColor="@color/blue"/>
+
+        <Switch
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBaseline_toBaselineOf="@id/order_title"
+            android:id="@+id/switch_order_watering"
+            android:checked="true"
+            android:layout_marginRight="20dp"
+            />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            app:layout_constraintTop_toBottomOf="@id/order_title"
+            app:layout_constraintBottom_toTopOf="@id/order_tip"
+            android:background="@color/color_1A000000"
+            android:id="@+id/line_order_watering"/>
+
+        <androidx.constraintlayout.widget.Group
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:constraint_referenced_ids="order_tip,order_date,order_time,btn_save_order_time,line_order_watering"
+            android:id="@+id/order_group"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/line_order_watering"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/order_date"
+            android:text="请设定开始浇灌的日期及时间"
+            android:layout_marginTop="20dp"
+            android:textSize="18sp"
+            android:textColor="@color/green"
+            android:id="@+id/order_tip"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="预约日期"
+            android:textSize="25sp"
+            android:textColor="@color/color_000000"
+            android:layout_gravity="center"
+            android:id="@+id/order_date"
+            app:layout_constraintTop_toBottomOf="@id/order_tip"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/order_time"
+            android:layout_marginTop="10dp"
+            android:background="#87CEEB"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="预约时间"
+            android:textSize="25sp"
+            android:textColor="@color/color_000000"
+            android:layout_gravity="center"
+            android:id="@+id/order_time"
+            app:layout_constraintTop_toBottomOf="@id/order_date"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/btn_save_order_time"
+            android:layout_marginTop="20dp"
+            android:background="#87CEEB"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_marginBottom="20dp"/>
+
+        <Button
+            android:id="@+id/btn_save_order_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/switch_button"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:text="保存预约时间"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/view_background2"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/order_time"
+            android:layout_marginBottom="20dp"/>
+
+        <View
+            android:id="@+id/view_background3"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/bg_card_radius"
+            app:layout_constraintBottom_toBottomOf="@id/my_log"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/view_background2"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="运行状态显示"
+            app:layout_constraintTop_toTopOf="@id/view_background3"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:id="@+id/running_status_title"
+            android:textSize="20sp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/blue"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            app:layout_constraintTop_toBottomOf="@id/running_status_title"
+            android:background="@color/color_1A000000"
+            android:layout_marginTop="15dp"
+            android:id="@+id/line_status"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/line_status"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="20dp"
+            android:text="目前硬件网络在线状态："
+            android:id="@+id/hardware_online_status"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/hardware_online_status"
+            android:layout_marginTop="5dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="20dp"
+            android:text="目前运行模式："
+            android:id="@+id/status_mode"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/status_mode"
+            android:layout_marginTop="5dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="20dp"
+            android:text="浇灌完成时间："
+            android:id="@+id/complete_time"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/complete_time"
+            android:layout_marginTop="5dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginLeft="20dp"
+            android:text="水流量检测开关状态："
+            android:id="@+id/water_check"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/water_check"
+            android:id="@+id/temperature"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:text="目前硬件温度为："
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/temperature"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:text="目前继电器状态:"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:id="@+id/relay_status" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/relay_status"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:text="硬件经纬度:"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="5dp"
+            android:id="@+id/location"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@id/view_background3"
+            app:layout_constraintTop_toBottomOf="@id/location"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="20dp"
+            android:id="@+id/my_log"
+            android:text="Log: "/>
+
+
+
+
+
+
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+
+
+
+
+
+
+</androidx.core.widget.NestedScrollView>
