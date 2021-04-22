@@ -13,6 +13,7 @@ import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.graphics.Color;
+import android.net.IpSecManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -79,6 +80,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         @Override
         public void onServiceConnected(ComponentName name, IBinder service) {
             mBinder = (BackgroundService.CountDownTimerBinder) service;
+
         }
 
         @Override
@@ -101,7 +103,26 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
     @Override
     protected void onResume() {
         super.onResume();
-        initWateringMode();
+        //新建子线程，子线程内延时1秒，等待ServiceConnection回调完成
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(500);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            //ServiceConnection回调完成后，得到binder后不会造成空指针
+                            initWateringMode();
+                            switchWateringMode();
+                        }
+                    });
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
+
     }
 
     @Override
@@ -132,8 +153,6 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         mBtnManualStop = findViewById(R.id.btn_manual_stop);
         mBackground2 = findViewById(R.id.view_background2);
         MainActivityPermissionsDispatcher.initStatusWithPermissionCheck(this);
-        initWateringMode();
-        switchWateringMode();
         mTiming.setOnClickListener(this);
         mBtnWatering.setOnClickListener(this);
         mOrderDate.setOnClickListener(this);
