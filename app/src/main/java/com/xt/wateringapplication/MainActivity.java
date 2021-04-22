@@ -100,30 +100,7 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
 
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        //新建子线程，子线程内延时1秒，等待ServiceConnection回调完成
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(500);
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            //ServiceConnection回调完成后，得到binder后不会造成空指针
-                            initWateringMode();
-                            switchWateringMode();
-                        }
-                    });
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
 
-    }
 
     @Override
     protected int initLayout() {
@@ -172,6 +149,31 @@ public class MainActivity extends BaseActivity implements View.OnClickListener {
         minList = IntStream.range(0, 60).mapToObj(String::valueOf).collect(Collectors.toList());
         secondList = IntStream.range(0, 60).mapToObj(String::valueOf).collect(Collectors.toList());
         refreshAllStatus();
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        //新建子线程，子线程内延时1秒，等待ServiceConnection回调完成
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(500);
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            //ServiceConnection回调完成后，得到binder后不会造成空指针
+                            initWateringMode();
+                            switchWateringMode();
+                        }
+                    });
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
 
     }
 
